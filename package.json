@@ -19,10 +19,15 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fmt": "oxfmt",
+    "lint": "oxlint"
   },
   "dependencies": {
     "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.41.0",
+    "oxlint": "^1.56.0"
   },
   "packageManager": "pnpm@10.30.3"
 }
