@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 export function generateSecretKey(length = 16) {
   const uppercaseLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const lowercaseLetter = 'abcdefghijklmnopqrstuvwxyz';
@@ -8,7 +10,7 @@ export function generateSecretKey(length = 16) {
   let secretKey = '';
 
   for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * allCharacters.length);
+    const randomIndex = crypto.randomInt(0, allCharacters.length);
     secretKey += allCharacters[randomIndex];
   }
 
