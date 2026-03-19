@@ -1,37 +1,46 @@
 #!/usr/bin/env node
-import { generateUuidV4, generateUuidV7 } from "./helpers/uuid.js";
-import { generateSecretKey } from "./helpers/secretKey.js";
+import { generateUuidV4, generateUuidV7 } from './helpers/uuid.js';
+import { generateSecretKey } from './helpers/secretKey.js';
 
 function readCommands() {
-  const commands = process.argv;
-  const command1 = commands[2];
-  const command2 = commands[3];
+  const args = process.argv.slice(process.argv.indexOf('create') + 1);
+  const command = args[0];
 
-  if (!command1 || !command2) {
-    console.log("You forgot one command");
+  if (!command) {
+    console.log('You forgot one command');
     return;
   }
 
-  if (command2 === "uuidv4" || command2 === "uuid") {
-    console.log(`Here's your UUID V4: ${generateUuidV4()}`);
+  if (command === 'uuidv4' || command === 'uuid') {
+    console.log(`Here's your uuidv4: ${generateUuidV4()}`);
     return;
-  } else if (command2 === "uuidv7") {
-    console.log(`Here's your UUID V7: ${generateUuidV7()}`);
+  } else if (command === 'uuidv7') {
+    console.log(`Here's your uuidv7: ${generateUuidV7()}`);
     return;
   }
 
-  if (command2 === "secret_key") {
-    if (commands.includes("--length")) {
-      const length = Number(commands[commands.length - 1]);
-      console.log(`Here's your Secret Key: ${generateSecretKey(length)}`);
-    } else {
-      console.log(`Here's your Secret Key: ${generateSecretKey()}`);
+  if (command === 'secret_key' || command === 'sk') {
+    if (args.includes('--length')) {
+      if (
+        args[args.indexOf('--length') + 1] === undefined ||
+        isNaN(args[args.indexOf('--length') + 1])
+      ) {
+        console.log('You missed number length');
+        return;
+      } else {
+        const length = Number(args[args.length - 1]);
+        console.log(
+          `Here's your ${length} characters long secret key: ${generateSecretKey(length)}`
+        );
+        return;
+      }
     }
 
+    console.log(`Here's your secret key: ${generateSecretKey()}`);
     return;
   }
 
-  console.log(`command ${command2} does not exist`);
+  console.log(`command ${command} does not exist`);
 }
 
 readCommands();
