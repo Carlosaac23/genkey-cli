@@ -6,10 +6,21 @@ import { generateSecretKey } from './lib/secretKey.js';
 import { generateUuidV4, generateUuidV7 } from './lib/uuid.js';
 import pkg from './package.json' with { type: 'json' };
 
-function main() {
+function getArgs() {
+  let args = process.argv.slice(2);
+
   const binaryNames = ['genkey-cli', 'gen'];
   const binaryIndex = process.argv.findIndex(arg => binaryNames.includes(arg));
-  const args = process.argv.slice(binaryIndex + 1);
+
+  if (binaryIndex !== -1) {
+    args = process.argv.slice(binaryIndex + 1);
+  }
+
+  return args;
+}
+
+function main() {
+  const args = getArgs();
   const command = args[0];
 
   if (!command) {
