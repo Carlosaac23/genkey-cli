@@ -14,7 +14,8 @@
   "license": "MIT",
   "author": "Carlos Acosta",
   "bin": {
-    "create": "index.js"
+    "gen": "index.js",
+    "genkey-cli": "index.js"
   },
   "type": "module",
   "main": "index.js",
