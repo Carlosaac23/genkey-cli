@@ -1,6 +1,6 @@
 {
   "name": "genkey-cli",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "CLI tool to generate secret keys and UUIDs directly from your terminal.",
   "keywords": [
     "cli",
@@ -11,7 +11,7 @@
     "terminal",
     "uuid"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "author": "Carlos Acosta",
   "bin": {
     "create": "./index.js"
