@@ -14,7 +14,7 @@
   "license": "MIT",
   "author": "Carlos Acosta",
   "bin": {
-    "create": "./index.js"
+    "create": "index.js"
   },
   "type": "module",
   "main": "index.js",
