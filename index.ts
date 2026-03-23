@@ -66,6 +66,8 @@ function main() {
   // Generates secret keys
   if (command === 'secret_key' || command === 'sk') {
     const lengthFlagIndex = args.findIndex(a => a === '--length' || a === '-l');
+    const withSpecial = args.some(a => a === '--special' || a === '-s');
+    console.log(withSpecial);
 
     let length;
     if (lengthFlagIndex !== -1) {
@@ -79,8 +81,9 @@ function main() {
     }
 
     try {
-      const value = length === undefined ? generateSecretKey() : generateSecretKey(length);
+      const value = generateSecretKey(length, withSpecial);
       const out = formatOutput({ type: 'secret_key', value, meta: { length: value.length }, args });
+      console.log('Value:', value);
 
       if (out !== null) {
         console.log(out);
@@ -92,11 +95,13 @@ function main() {
         process.exit(0);
       }
 
-      console.log(`Here's your secret key: ${generateSecretKey()}`);
+      console.log(`Here's your secret key: ${value}`);
       process.exit(0);
     } catch (error) {
-      console.error(error.message);
-      fail(error.message);
+      if (error instanceof Error) {
+        console.error(error.message);
+        fail(error.message);
+      }
     }
   }
 
