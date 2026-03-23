@@ -65,3 +65,7 @@ genkey-cli secret_key --json
 ## License
 
 MIT
+
+## Changelog
+
+See [CHANGELOG.md](https://github.com/Carlosaac23/genkey-cli/blob/main/CHANGELOG.md) for release history.
