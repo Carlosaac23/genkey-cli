@@ -1,4 +1,4 @@
-export function printHelp() {
+export function printHelp(): void {
   console.log(
     `
   genkey-cli or gen <command> [options]

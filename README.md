@@ -8,6 +8,10 @@ A simple CLI tool to generate secret keys and UUIDs directly from your terminal.
 npm i -g genkey-cli
 ```
 
+## Why genkey-cli?
+
+Every developer at some point needs a quick secret key for a JWT, or a UUID for a database record. Instead of opening a browser, writing a script, or digging through docs — just run one command and get what you need instantly.
+
 ## Usage
 
 ```bash

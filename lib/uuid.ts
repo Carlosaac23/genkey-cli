@@ -1,6 +1,6 @@
 import { v4 as uuidv4, v7 as uuidv7 } from 'uuid';
 
-function generateUuid(version = 4) {
+function generateUuid(version: number = 4): string {
   if (version === 4) {
     return uuidv4();
   }

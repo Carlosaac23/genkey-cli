@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-export function generateSecretKey(length = 16) {
+export function generateSecretKey(length: number = 16, withSpecial: boolean = false) {
   if (!Number.isFinite(length) || Number.isNaN(length)) {
     throw new Error('Secret key length must be a number');
   }
@@ -24,11 +24,14 @@ export function generateSecretKey(length = 16) {
   const specialCharacter = '!@#$%^&*_?';
 
   const allCharacters = uppercaseLetter + lowercaseLetter + digit + specialCharacter;
+  const allCharactersWithoutSpecialChar = uppercaseLetter + lowercaseLetter + digit;
   let secretKey = '';
 
+  const charset = withSpecial ? allCharacters : allCharactersWithoutSpecialChar;
+
   for (let i = 0; i < length; i++) {
-    const randomIndex = crypto.randomInt(0, allCharacters.length);
-    secretKey += allCharacters[randomIndex];
+    const randomIndex = crypto.randomInt(0, charset.length);
+    secretKey += charset[randomIndex];
   }
 
   return secretKey;
