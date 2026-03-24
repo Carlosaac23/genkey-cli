@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2026-03-24
+
+### Fixed
+
+- Corrected `outDir` in `tsconfig.json` from `./dist/index.js` to `./dist`, which caused `dist/index.js` to be created as a directory instead of a file
+
 ## [1.1.0] - 2026-03-23
 
 ### Added
