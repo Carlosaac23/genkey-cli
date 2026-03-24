@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2026-03-24
+
+### Fixed
+
+- Removed debug `console.log` statements left in production build
+
 ## [1.1.1] - 2026-03-24
 
 ### Fixed
