@@ -67,7 +67,6 @@ function main() {
   if (command === 'secret_key' || command === 'sk') {
     const lengthFlagIndex = args.findIndex(a => a === '--length' || a === '-l');
     const withSpecial = args.some(a => a === '--special' || a === '-s');
-    console.log(withSpecial);
 
     let length;
     if (lengthFlagIndex !== -1) {
@@ -83,7 +82,6 @@ function main() {
     try {
       const value = generateSecretKey(length, withSpecial);
       const out = formatOutput({ type: 'secret_key', value, meta: { length: value.length }, args });
-      console.log('Value:', value);
 
       if (out !== null) {
         console.log(out);
