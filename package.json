@@ -27,6 +27,7 @@
     "publish:npm": "pnpm build && npm publish --access public"
   },
   "dependencies": {
+    "clipboardy": "^5.3.1",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
