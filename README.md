@@ -31,13 +31,14 @@ Running without a command prints the help output.
 
 ## Options
 
-| Option                               | Description                         |
-| ------------------------------------ | ----------------------------------- |
-| `--length <number>` or `-l <number>` | Secret key length (min 8, max 1024) |
-| `--version` or `-v`                  | Show current CLI version            |
-| `--help` or `-h`                     | Show help                           |
-| `--json`                             | Print JSON output                   |
-| `--raw`                              | Print only the generated value      |
+| Option                               | Description                                    |
+| ------------------------------------ | ---------------------------------------------- |
+| `--length <number>` or `-l <number>` | Secret key length (min 8, max 1024)            |
+| `--special` or `-s`                  | Generates Secret key values with special chars |
+| `--version` or `-v`                  | Show current CLI version                       |
+| `--help` or `-h`                     | Show help                                      |
+| `--json`                             | Print JSON output                              |
+| `--raw`                              | Print only the generated value                 |
 
 ## Examples
 

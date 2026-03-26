@@ -10,14 +10,20 @@ export function printHelp(): void {
 
   Options:
     --length <number>    Secret key length (for secret_key)
-    --version | -v  Show version
+    --special | -s       Generates secret keys with special chars (for secret_key only)
+    --version | -v       Show version
     --help | -h          Show help
+    --json               Print JSON output
+    --raw                Print only the generated value
 
   Examples:
     genkey-cli uuidv4
     genkey-cli uuidv7
     genkey-cli secret_key
     genkey-cli secret_key --length 64
+    genkey-cli secret_key --length -s
+    genkey-cli secret_key --json
+    genkey-cli secret_key --raw
     `.trim()
   );
 }
