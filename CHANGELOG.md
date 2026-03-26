@@ -2,15 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.3] - 2026-03-26
+
+### Added [1.1.3]
+
+- Now after create a secret key or uuid it will automatically copied to your clipboard
+
+### Changed [1.1.3]
+
+- Separate command logic into individual modules, reducing `index.ts` complexity
+
 ## [1.1.2] - 2026-03-24
 
-### Fixed
+### Fixed [1.1.2]
 
 - Removed debug `console.log` statements left in production build
 
 ## [1.1.1] - 2026-03-24
 
-### Fixed
+### Fixed [1.1.1]
 
 - Corrected `outDir` in `tsconfig.json` from `./dist/index.js` to `./dist`, which caused `dist/index.js` to be created as a directory instead of a file
 
@@ -26,14 +36,14 @@ All notable changes to this project will be documented in this file.
 - Improved input validation for `--length` flag (rejects non-numeric and missing values)
 - Added max length limit of 1024 for secret keys
 
-### Fixed
+### Fixed [1.1.0]
 
 - Fixed `process.argv` parsing when running as a globally installed binary
 - Fixed duplicate key generation bug in `secret_key` command
 
 ## [1.0.0] - 2026-03-19
 
-### Added
+### Added [1.0.0]
 
 - `uuidv4` / `uuid` command — generate a UUID v4
 - `uuidv7` command — generate a UUID v7
