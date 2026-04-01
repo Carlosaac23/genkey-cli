@@ -1,5 +1,5 @@
-import pkg from '../package.json' with { type: 'json' };
+import { VERSION } from './version.generated.js';
 
 export function showVersion() {
-  console.log('Version: ', pkg.version);
+  console.log('Version: ', VERSION);
 }
