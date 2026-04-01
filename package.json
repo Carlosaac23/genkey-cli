@@ -17,14 +17,18 @@
     "gen": "dist/index.js",
     "genkey-cli": "dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "fmt": "oxfmt",
     "lint": "oxlint",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "publish:npm": "pnpm build && npm publish --access public"
+    "prebuild": "node scripts/generate-version.mjs",
+    "publish:npm": "pnpm build && npm publish --access public",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "clipboardy": "^5.3.1",
