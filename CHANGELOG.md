@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.4] - 2026-04-01
+
+### Changed [1.1.4]
+
+- Reduced build output size by simplifying TypeScript emit and trimming published artifacts.
+- Improved version handling to avoid runtime `package.json` import in CLI output.
+- Switched UUID v4 to `crypto.randomUUID` and kept `uuid` only for v7 support.
+
+### Fized [1.1.4]
+
+- Minor package metada cleanup (`main` path and publish surface).
+
 ## [1.1.3] - 2026-03-26
 
 ### Added [1.1.3]
