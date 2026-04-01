@@ -1,13 +1,14 @@
-import { v4 as uuidv4, v7 as uuidv7 } from 'uuid';
+import { randomUUID } from 'node:crypto';
+import { v7 as uuidv7 } from 'uuid';
 
 function generateUuid(version: number = 4): string {
   if (version === 4) {
-    return uuidv4();
+    return randomUUID();
   }
 
   if (version === 7) {
     if (typeof uuidv7 !== 'function') {
-      return uuidv4();
+      return randomUUID();
     }
 
     return uuidv7();
