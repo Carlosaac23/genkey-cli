@@ -21,7 +21,7 @@
     "dist"
   ],
   "type": "module",
-  "main": "dis/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "fmt": "oxfmt",
     "lint": "oxlint",
