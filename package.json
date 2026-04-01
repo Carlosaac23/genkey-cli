@@ -17,8 +17,11 @@
     "gen": "dist/index.js",
     "genkey-cli": "dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
-  "main": "index.js",
+  "main": "dis/index.js",
   "scripts": {
     "fmt": "oxfmt",
     "lint": "oxlint",
