@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.5] - 2026-05-01
+
+### Chore
+
+- Update `oxfmt` and `uuid` packages.
+
 ## [1.1.4] - 2026-04-01
 
 ### Changed [1.1.4]
@@ -10,7 +16,7 @@ All notable changes to this project will be documented in this file.
 - Improved version handling to avoid runtime `package.json` import in CLI output.
 - Switched UUID v4 to `crypto.randomUUID` and kept `uuid` only for v7 support.
 
-### Fized [1.1.4]
+### Fixed [1.1.4]
 
 - Minor package metada cleanup (`main` path and publish surface).
 
@@ -34,7 +40,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed [1.1.1]
 
-- Corrected `outDir` in `tsconfig.json` from `./dist/index.js` to `./dist`, which caused `dist/index.js` to be created as a directory instead of a file
+- Corrected `outDir` in `tsconfig.json` from `./dist/index.js` to `./dist`, which caused `dist/index.js` to be created
+  as a directory instead of a file.
 
 ## [1.1.0] - 2026-03-23
 
@@ -45,7 +52,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Migrated entire codebase from JavaScript to TypeScript
-- Improved input validation for `--length` flag (rejects non-numeric and missing values)
+- Improved input validation for `--length` flag (rejects non-numeric and missing values).
 - Added max length limit of 1024 for secret keys
 
 ### Fixed [1.1.0]
