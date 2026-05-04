@@ -1,10 +1,10 @@
-import clipboard from 'clipboardy';
-
 import { getArgs } from '../helpers/args.js';
-import { copied } from '../helpers/copied.js';
+import { copyToClipboard } from '../helpers/copyToClipboard.js';
 import { fail } from '../helpers/error.js';
 import { formatOutput } from '../helpers/format.js';
+import { logWarning } from '../helpers/logWarning.js';
 import { generateSecretKey } from '../lib/secretKey.js';
+
 export async function generateSecretKeyCommand() {
   const args = getArgs();
   const lengthFlagIndex = args.findIndex(a => a === '--length' || a === '-l');
@@ -27,53 +27,34 @@ export async function generateSecretKeyCommand() {
     const out = formatOutput({ type: 'secret_key', value, meta: { length: value.length }, args });
 
     if (out !== null) {
-      console.log(`${out}\n`);
+      console.log(noCopy ? out : `${out}\n`);
 
-      if (!noCopy) {
-        try {
-          await clipboard.write(out);
-          copied();
-        } catch (error) {
-          console.error('Failed to copy:', error);
-        }
-      }
+      await copyToClipboard({ value: out, noCopy });
 
       process.exit(0);
     }
 
     if (length !== undefined) {
-      console.log(`Here's your ${length} characters long secret key: ${value}\n`);
+      console.log(
+        `Here's your ${length} characters long secret key: ${value}${noCopy ? '' : '\n'}`
+      );
 
       if (length < 32) {
-        console.warn('⚠️  For higher security, consider using --length 32 or higher\n');
+        logWarning();
       }
 
-      if (!noCopy) {
-        try {
-          await clipboard.write(value);
-          copied();
-        } catch (error) {
-          console.error('Failed to copy:', error);
-        }
-      }
+      await copyToClipboard({ value, noCopy });
 
       process.exit(0);
     }
 
-    console.log(`Here's your secret key: ${value}\n`);
+    console.log(`Here's your secret key: ${value}${noCopy ? '' : '\n'}`);
 
     if (length === undefined) {
-      console.warn('⚠️  For higher security, consider using --length 32 or higher\n');
+      logWarning();
     }
 
-    if (!noCopy) {
-      try {
-        await clipboard.write(value);
-        copied();
-      } catch (error) {
-        console.error('Failed to copy:', error);
-      }
-    }
+    await copyToClipboard({ value, noCopy });
 
     process.exit(0);
   } catch (error) {
