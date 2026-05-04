@@ -9,6 +9,7 @@ export async function generateSecretKeyCommand() {
   const args = getArgs();
   const lengthFlagIndex = args.findIndex(a => a === '--length' || a === '-l');
   const withSpecial = args.some(a => a === '--special' || a === '-s');
+  const noCopy = args.some(a => a === '--no-copy');
 
   let length;
   if (lengthFlagIndex !== -1) {
@@ -28,8 +29,14 @@ export async function generateSecretKeyCommand() {
     if (out !== null) {
       console.log(`${out}\n`);
 
-      await clipboard.write(out);
-      copied();
+      if (!noCopy) {
+        try {
+          await clipboard.write(out);
+          copied();
+        } catch (error) {
+          console.error('Failed to copy:', error);
+        }
+      }
 
       process.exit(0);
     }
@@ -37,15 +44,36 @@ export async function generateSecretKeyCommand() {
     if (length !== undefined) {
       console.log(`Here's your ${length} characters long secret key: ${value}\n`);
 
-      await clipboard.write(value);
-      copied();
+      if (length < 32) {
+        console.warn('⚠️  For higher security, consider using --length 32 or higher\n');
+      }
+
+      if (!noCopy) {
+        try {
+          await clipboard.write(value);
+          copied();
+        } catch (error) {
+          console.error('Failed to copy:', error);
+        }
+      }
 
       process.exit(0);
     }
 
     console.log(`Here's your secret key: ${value}\n`);
-    await clipboard.write(value);
-    copied();
+
+    if (length === undefined) {
+      console.warn('⚠️  For higher security, consider using --length 32 or higher\n');
+    }
+
+    if (!noCopy) {
+      try {
+        await clipboard.write(value);
+        copied();
+      } catch (error) {
+        console.error('Failed to copy:', error);
+      }
+    }
 
     process.exit(0);
   } catch (error) {

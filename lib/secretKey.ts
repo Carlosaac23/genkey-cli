@@ -13,7 +13,7 @@ export function generateSecretKey(length: number = 16, withSpecial: boolean = fa
     throw new Error('Secret key length must be at least 8');
   }
 
-  const MAX_LENGTH = 1024;
+  const MAX_LENGTH = 256;
   if (length > MAX_LENGTH) {
     throw new Error(`Secret key length must be <= ${MAX_LENGTH}`);
   }
