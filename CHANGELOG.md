@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.6] - 2026-05-04
+
+### Added
+
+- `--no-copy` flag to disable auto-copy to clipboard.
+
+### Changed
+
+- Added warning when using default or short secret key length (<32) suggesting higher security.
+- Added error handling around clipboard operations to gracefully fail when clipboard is unavailable.
+
 ## [1.1.5] - 2026-05-01
 
 ### Chore
@@ -45,15 +56,15 @@ All notable changes to this project will be documented in this file.
 
 ## [1.1.0] - 2026-03-23
 
-### Added
+### Added [1.1.0]
 
 - `--special` / `-s` flag for `secret_key` command — generates keys with special characters (`!@#$%^&*_?`)
 
-### Changed
+### Changed [1.1.0]
 
 - Migrated entire codebase from JavaScript to TypeScript
 - Improved input validation for `--length` flag (rejects non-numeric and missing values).
-- Added max length limit of 1024 for secret keys
+- Added max length limit of 256 for secret keys
 
 ### Fixed [1.1.0]
 
@@ -67,7 +78,7 @@ All notable changes to this project will be documented in this file.
 - `uuidv4` / `uuid` command — generate a UUID v4
 - `uuidv7` command — generate a UUID v7
 - `secret_key` / `sk` command — generate a cryptographically secure secret key
-- `--length` flag for custom secret key length (minimum 8, maximum 1024)
+- `--length` flag for custom secret key length (minimum 8, maximum 256)
 - `--version` / `-v` flag
 - `--help` / `-h` flag
 - Binary aliases: `gen` and `genkey-cli`

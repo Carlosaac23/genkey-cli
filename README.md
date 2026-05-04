@@ -33,8 +33,9 @@ Running without a command prints the help output.
 
 | Option                               | Description                                    |
 | ------------------------------------ | ---------------------------------------------- |
-| `--length <number>` or `-l <number>` | Secret key length (min 8, max 1024)            |
+| `--length <number>` or `-l <number>` | Secret key length (min 8, max 256)             |
 | `--special` or `-s`                  | Generates Secret key values with special chars |
+| `--no-copy`                          | Disable auto-copy to clipboard                 |
 | `--version` or `-v`                  | Show current CLI version                       |
 | `--help` or `-h`                     | Show help                                      |
 | `--json`                             | Print JSON output                              |
@@ -62,6 +63,14 @@ genkey-cli secret_key --json
 #   "length": 16
 # }
 ```
+
+## Security Notes
+
+- Generated secret keys use `crypto.randomInt()` for cryptographically secure randomness
+- Keys are suitable for session tokens, API keys, and similar use cases
+- **Not recommended** for cryptographic key derivation (e.g., encryption keys) — consider using `crypto.randomBytes()` directly for such purposes
+- Recommended length: `--length 32` or higher for sensitive applications
+- Secret keys are automatically copied to your clipboard after generation
 
 ## License
 
