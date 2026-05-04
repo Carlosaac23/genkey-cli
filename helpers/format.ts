@@ -8,7 +8,7 @@ export function formatOutput({
   value: any;
   meta?: Record<string, any>;
   args: string[];
-}) {
+}): string | null {
   if (args.includes('--raw')) return value;
 
   if (args.includes('--json')) {
